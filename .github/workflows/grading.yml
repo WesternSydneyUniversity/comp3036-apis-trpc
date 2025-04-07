@@ -41,7 +41,7 @@ jobs:
           working-directory: .
           test-name: Exercise
           courseId: ${{env.COURSE}}
-          sectionId: exercise-trpc-in-apis`
+          sectionId: exercise-trpc-in-apis
           command: pnpm test
           timeout: 10
           max-score: 1

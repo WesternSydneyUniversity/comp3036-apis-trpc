@@ -17,9 +17,7 @@ export const appRouter = t.router({
   }),
 
   getTaskById: t.procedure.input(z.number()).query(({ input }) => {
-    const task = tasks.find((t) => t.id === input);
-    if (!task) throw new Error("Task not found");
-    return task;
+    // TODO
   }),
 
   createTask: t.procedure
@@ -30,38 +28,10 @@ export const appRouter = t.router({
       })
     )
     .mutation(({ input }) => {
-      const newTask: Task = {
-        id: tasks.length + 1,
-        description: input.description,
-        completed: input.completed || false,
-      };
-      tasks.push(newTask);
-      return newTask;
+      // TODO
     }),
 
-  updateTask: t.procedure
-    .input(
-      z.object({
-        id: z.number(),
-        description: z.string(),
-        completed: z.boolean(),
-      })
-    )
-    .mutation(({ input }) => {
-      const taskIndex = tasks.findIndex((t) => t.id === input.id);
-      if (taskIndex === -1) throw new Error("Task not found");
-      const updatedTask: Task = { ...input };
-      tasks[taskIndex] = updatedTask;
-      return updatedTask;
-    }),
-
-  deleteTask: t.procedure.input(z.number()).mutation(({ input }) => {
-    const taskIndex = tasks.findIndex((t) => t.id === input);
-    if (taskIndex === -1) throw new Error("Task not found");
-    tasks.splice(taskIndex, 1);
-    console.log(tasks);
-    return { message: "Task deleted" };
-  }),
+  // TODO: update and delete task
 });
 
 export type AppRouter = typeof appRouter;
